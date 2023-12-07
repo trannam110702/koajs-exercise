@@ -2,11 +2,13 @@ import fs from "fs";
 const products = require("./products.json");
 
 export function getAll() {
+  //sao lại phải tách hàm getAll với getAllWithLimit nhỉ , thay vì thế mình có thể viết hàm getAll(params) với params là các điều kiện khi mình get list product chẳng hạn , thử xem nhé 
   return products;
 }
 
 export function getAllWithLimit(limit) {
   let result = [];
+  // todo: dùng cách khác limit nhé 
   for (let index = 0; index < limit; index++) {
     const element = products[index];
     result.push(element);
@@ -28,6 +30,7 @@ export function sortResult(products, type) {
 export function getOne(id, fields) {
   const result = products.find((product) => product.id === parseInt(id));
   const resultWithFields = {};
+  //todo: tách đoạn này ra thành 1 hàm pickFields chẳng hạn để có thể dùng ở nhiều chỗ  .
   if (fields) {
     for (const key in result) {
       if (fields.includes(key)) {
@@ -64,5 +67,6 @@ export function deleteOne(id) {
     return product.id !== parseInt(id);
   });
   if (!updatedproducts) return null;
+  //todo: chỗ write này viết thành hàm saveData chẳng hạn cho nó ngắn sau mình cũng dễ chỉnh sửa 
   return fs.writeFileSync("./src/database/products.json", JSON.stringify(updatedproducts));
 }
