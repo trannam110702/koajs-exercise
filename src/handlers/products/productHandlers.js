@@ -1,6 +1,5 @@
 import {
   getAll as getAllProducts,
-  getAllWithLimit as getAllProductsWithLimit,
   sortResult as sortProducts,
   getOne as getOneProduct,
   add as addProduct,
@@ -10,16 +9,7 @@ import {
 
 export async function getProducts(ctx) {
   try {
-    const query = ctx.request.query;
-    let Products;
-    if (query.limit) {
-      Products = getAllProductsWithLimit(query.limit);
-    } else {
-      Products = getAllProducts();
-    }
-    if (query.sort) {
-      Products = sortProducts(Products);
-    }
+    const Products = getAllProducts(ctx.request.query);
     ctx.body = {
       data: Products,
     };
