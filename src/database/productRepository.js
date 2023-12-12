@@ -1,36 +1,8 @@
-import fs from "fs";
+import saveData from "../helpers/saveData";
+import sortResult from "../helpers/product/sort";
+import pickFields from "../helpers/product/pickFields";
 const products = require("./products.json");
 
-const saveData = (jsData) =>
-  fs.writeFileSync("./src/database/products.json", JSON.stringify(jsData));
-const sortResult = (products, type) => {
-  let result;
-  switch (type) {
-    case "asc":
-      result = products.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-      break;
-    case "desc":
-      result = products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      break;
-    default:
-      result = products;
-      break;
-  }
-  return result;
-};
-const pickFields = (data, fields) => {
-  const result = {};
-  if (fields) {
-    for (const key in data) {
-      if (fields.includes(key)) {
-        result[key] = data[key];
-      }
-    }
-    return result;
-  } else {
-    return data;
-  }
-};
 export function getAll(params) {
   let result = products;
   if (params.limit) {

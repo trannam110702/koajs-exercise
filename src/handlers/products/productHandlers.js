@@ -1,6 +1,5 @@
 import {
   getAll as getAllProducts,
-  sortResult as sortProducts,
   getOne as getOneProduct,
   add as addProduct,
   deleteOne as deleteOneProduct,
