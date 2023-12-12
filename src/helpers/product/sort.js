@@ -1,3 +1,9 @@
+/**
+ * Sort the array of products
+ * @param {Array} products
+ * @param {string} type
+ * @returns {Array}
+ */
 const sortResult = (products, type) => {
   let result;
   switch (type) {

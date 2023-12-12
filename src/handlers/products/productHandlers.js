@@ -6,6 +6,11 @@ import {
   update as updateProduct,
 } from "../../database/productRepository";
 
+/**
+ *
+ * @param ctx
+ * @returns {Promise<{data: [{id: number, name: string, price: string, description: string, product: string, color: string, image: string, createdAt: string}], success: boolean, error: *, message: string, status: string}>}
+ */
 export async function getProducts(ctx) {
   try {
     const Products = getAllProducts(ctx.request.query);
@@ -22,6 +27,11 @@ export async function getProducts(ctx) {
   }
 }
 
+/**
+ *
+ * @param ctx
+ * @returns {Promise<{data: {id: number, name: string, price: string, description: string, product: string, color: string, image: string, createdAt: string}, success: boolean, error: *, message: string, status: string}>}
+ */
 export async function getProduct(ctx) {
   try {
     const { id } = ctx.params;
@@ -47,6 +57,11 @@ export async function getProduct(ctx) {
   }
 }
 
+/**
+ *
+ * @param ctx
+ * @returns {Promise<{success: boolean, error: *, message: string, status: string}>}
+ */
 export async function save(ctx) {
   try {
     const postData = ctx.request.body;
@@ -63,6 +78,11 @@ export async function save(ctx) {
   }
 }
 
+/**
+ *
+ * @param ctx
+ * @returns {Promise<{success: boolean, error: *, message: string, status: string}>}
+ */
 export async function update(ctx) {
   try {
     const postData = ctx.request.body;
@@ -81,6 +101,11 @@ export async function update(ctx) {
   }
 }
 
+/**
+ *
+ * @param ctx
+ * @returns {Promise<{success: boolean, error: *, message: string, status: string}>}
+ */
 export async function deleteOne(ctx) {
   try {
     deleteOneProduct(ctx.params.id);

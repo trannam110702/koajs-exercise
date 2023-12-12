@@ -1,3 +1,9 @@
+/**
+ * Return specific fields of an object
+ * @param {Object} data
+ * @param {Array<string>} fields
+ * @returns {Object}
+ */
 const pickFields = (data, fields) => {
   const result = {};
   if (fields) {
