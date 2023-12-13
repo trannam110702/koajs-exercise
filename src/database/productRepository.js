@@ -10,11 +10,11 @@ const products = require("./products.json");
  */
 export function getAll(params) {
   let result = products;
-  if (params.limit) {
-    result = result.slice(0, params.limit);
-  }
   if (params.sort) {
     result = sortResult(result, params.sort);
+  }
+  if (params.limit) {
+    result = result.slice(0, params.limit);
   }
   return result;
 }
@@ -49,7 +49,7 @@ export function add(data) {
  */
 export function update(data, id) {
   const productToUpdate = getOne(id);
-  if (!productToUpdate) return null;
+  if (!productToUpdate) return false;
   const updatedproducts = products.map((product) => {
     if (product.id === parseInt(id)) return { ...product, ...data };
     return product;
@@ -57,6 +57,7 @@ export function update(data, id) {
   saveData(updatedproducts);
   return true;
 }
+
 /**
  * Delete a product
  * @param {number | string} id - product id to delete

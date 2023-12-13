@@ -4,7 +4,7 @@ const faker = require("faker");
 const generateProducts = () => {
   const products = [];
 
-  for (let i = 1; i <= 1000; i++) {
+  for (let i = 1; i <= 10; i++) {
     const product = {
       id: i,
       name: faker.commerce.productName(),
